@@ -1,0 +1,26 @@
+<div uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky; bottom: #transparent-sticky-navbar">
+
+  <nav class="uk-navbar-container" uk-navbar>
+    <div class="uk-navbar-right">
+
+      <ul class="uk-navbar-nav">
+        <li> <a [routerLink]="[ '/course',{id:0}]">Courses</a>
+        </li>
+        <li> <a [routerLink]="[ '/demo-batch' ]">Schedule</a></li>
+        <li><a [routerLink]="[ '/job-openings',{id:0}]">job-openings</a></li>
+        <li><a [routerLink]="[ '/certification',{id:0}]">Certification</a></li>
+        <li>
+          <a href="#">Parent</a>
+          <div class="uk-navbar-dropdown">
+            <ul class="uk-nav uk-navbar-dropdown-nav">
+              <li class="uk-active"><a href="#">Active</a></li>
+              <li><a href="#">Item</a></li>
+              <li><a href="#">Item</a></li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+
+    </div>
+  </nav>
+</div>

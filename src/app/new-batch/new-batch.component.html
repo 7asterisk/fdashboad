@@ -1,0 +1,45 @@
+<div class="uk-text-center" uk-grid>
+  <div class="uk-width-1-4@m">
+    <div class="sidenav">
+      <ul class="uk-list">
+        <li> <a class="uk-button uk-button-text" [routerLink]="[ '/demo-batch' ]">Demo Batch</a></li>
+        <li> <a class="uk-button uk-button-text" [routerLink]="[ '/new-batch' ]">New Batch</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="uk-width-expand@m" style="padding-left: 0px; height: 100%;">
+
+    <table class="uk-table uk-table-striped">
+      <thead>
+        <tr>
+          <th>Course Name</th>
+          <th>Start Date</th>
+          <th>Batch Day</th>
+          <th>Time</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let sc of allScdule;let i=index">
+          <td>{{sc.cName}}</td>
+          <td>{{sc.date}}</td>
+          <td>{{sc.day}}</td>
+          <td>{{sc.time}}</td>
+          <td> <button class="uk-button uk-button-text" (click)="deleteSc(sc.id)"><i class="fa  fa-trash"></i> </button>
+          </td>
+        </tr>
+        <tr>
+          <td> <input class="uk-input uk-form-small" [(ngModel)]="scduleLine.cName" type="text" placeholder="Default">
+          </td>
+          <td> <input class="uk-input uk-form-small" [(ngModel)]="scduleLine.date" type="text" placeholder="Default">
+          </td>
+          <td> <input class="uk-input uk-form-small" [(ngModel)]="scduleLine.day" type="text" placeholder="Default">
+          </td>
+          <td> <input class="uk-input uk-form-small" [(ngModel)]="scduleLine.time" type="text" placeholder="Default">
+          </td>
+          <td> <button class="uk-button uk-button-text" (click)="saveLine()"><i class="fa  fa-save"></i> </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

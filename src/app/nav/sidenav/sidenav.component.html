@@ -1,0 +1,44 @@
+<div class="sidenav">
+  <ul uk-accordion>
+    <li class="uk-open">
+      <a class="uk-accordion-title" href="#">Courses</a>
+      <div class="uk-accordion-content">
+        <ul class="uk-list">
+          <li *ngFor="let course of courses; let i=index"><a class="uk-button uk-button-text"
+              [routerLink]="[ '/course',{id:i}]"> {{course.name}} </a></li>
+        </ul>
+        <button class="uk-button uk-button-secondary" [routerLink]="[ '/course',{id:-1}]">Add course</button>
+      </div>
+    </li>
+    <li>
+      <a class="uk-accordion-title" href="#">Schedule</a>
+      <div class="uk-accordion-content">
+        <ul class="uk-list">
+          <li> <a class="uk-button uk-button-text" [routerLink]="[ '/demo-batch' ]">Demo Batch</a></li>
+          <li> <a class="uk-button uk-button-text" [routerLink]="[ '/new-batch' ]">New Batch</a></li>
+        </ul>
+      </div>
+    </li>
+    <li> <a class="uk-accordion-title" href="#">Certification</a>
+      <div class="uk-accordion-content">
+        <ul class="uk-list">
+          <li *ngFor="let certification of certifications; let i=index"><a class="uk-button uk-button-text"
+              [routerLink]="[ '/certification',{id:i}]"> {{certification.name}} </a></li>
+        </ul>
+        <button class="uk-button uk-button-secondary" [routerLink]="[ '/certification',{id:-1}]">Add certification
+        </button>
+      </div>
+    </li>
+    <li> <a class="uk-accordion-title" href="#">job-openings</a>
+      <div class="uk-accordion-content">
+        <ul class="uk-list">
+          <li *ngFor="let job of openings; let i=index"><a class="uk-button uk-button-text"
+              [routerLink]="[ '/job-openings',{id:i}]"> {{job.name}} </a></li>
+        </ul>
+        <button class="uk-button uk-button-secondary" [routerLink]="[ '/job-openings',{id:-1}]">Add certification
+        </button>
+      </div>
+    </li>
+
+  </ul>
+</div>

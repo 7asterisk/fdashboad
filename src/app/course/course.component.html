@@ -1,0 +1,84 @@
+<div class="uk-text-center" uk-grid>
+  <div class="uk-width-1-4@m">
+    <div class="sidenav">
+      <ul class="uk-list">
+        <li *ngFor="let course of courses; let i=index"><a class="uk-button uk-button-text"
+            [routerLink]="[ '/course',{id:i}]"> {{course.name}} </a></li>
+      </ul>
+      <button class="uk-button uk-button-secondary" [routerLink]="[ '/course',{id:-1}]">Add course</button>
+    </div>
+  </div>
+  <div class="uk-width-expand@m" style="padding-left: 0px; height: 100%;">
+
+    <button class="uk-button uk-button-default" (click)="updateCourse()"> save change </button>
+    <button class="uk-button uk-button-default" (click)="deleteCourse(course.id)"> delete course </button>
+
+    <h2 *ngIf="!editName" class="uk-margin">
+      {{course.name}}
+      <a (click)="editName=true"> <span uk-icon="file-edit"></span></a>
+    </h2>
+    <div class="uk-margin" *ngIf="editName">
+      <input class="uk-input uk-form-width-medium uk-form-large" [(ngModel)]="course.name" type="text"
+        placeholder="Large">
+      <a class="uk-margin" (click)="editName=false"> <span uk-icon="check"></span></a>
+    </div>
+
+    <div *ngIf="!editImgUrl">
+      <img [src]="course.imgUrl" style="height: 200px;" alt="">
+      <a (click)="editImgUrl=true"> <span uk-icon="file-edit"></span></a>
+    </div>
+    <div class="uk-margin" *ngIf="editImgUrl">
+      <input class="uk-input uk-form-width-medium uk-form-large" [(ngModel)]="course.imgUrl" type="text"
+        placeholder="Large">
+      <a class="uk-margin" (click)="editImgUrl=false"> <span uk-icon="check"></span></a>
+    </div>
+
+    <ul uk-accordion class="desc-list">
+      <li class="uk-open">
+        <a class="uk-accordion-title" href="#">Overview</a>
+        <div class="uk-accordion-content">
+          <app-ngx-editor [config]="editorConfig" resizer="basic" [(ngModel)]="course.desc">
+          </app-ngx-editor>
+        </div>
+      </li>
+      <li>
+        <a class="uk-accordion-title" href="#">Curriculum & Batches</a>
+        <div class="uk-accordion-content">
+          <app-ngx-editor [config]="editorConfig" resizer="basic" [(ngModel)]="course.curriculum">
+          </app-ngx-editor>
+        </div>
+      </li>
+      <li>
+        <a class="uk-accordion-title" href="#">
+          Certification
+        </a>
+        <div class="uk-accordion-content">
+          <app-ngx-editor [config]="editorConfig" resizer="basic" [(ngModel)]="course.certification">
+          </app-ngx-editor>
+        </div>
+      </li>
+      <li>
+        <a class="uk-accordion-title" href="#"> Trainer Profile</a>
+        <div class="uk-accordion-content">
+          <app-ngx-editor [config]="editorConfig" resizer="basic" [(ngModel)]="course.trainerProfile">
+          </app-ngx-editor>
+        </div>
+      </li>
+      <li>
+        <a class="uk-accordion-title" href="#"> Why Radical?</a>
+        <div class="uk-accordion-content">
+          <app-ngx-editor [config]="editorConfig" resizer="basic" [(ngModel)]="course.whyRadical">
+          </app-ngx-editor>
+        </div>
+      </li>
+      <li>
+        <a class="uk-accordion-title" href="#"> What is next</a>
+        <div class="uk-accordion-content">
+          <app-ngx-editor [config]="editorConfig" resizer="basic" [(ngModel)]="course.whatIsNext">
+          </app-ngx-editor>
+        </div>
+      </li>
+    </ul>
+
+  </div>
+</div>

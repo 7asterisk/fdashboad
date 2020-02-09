@@ -1,0 +1,43 @@
+<div class="uk-text-center" uk-grid>
+  <div class="uk-width-1-4@m">
+    <div class="sidenav">
+      <ul class="uk-list">
+        <ul class="uk-list">
+          <li *ngFor="let job of openings; let i=index"><a class="uk-button uk-button-text"
+              [routerLink]="[ '/job-openings',{id:i}]"> {{job.name}} </a></li>
+        </ul>
+      </ul>
+      <button class="uk-button uk-button-secondary" [routerLink]="[ '/job-openings',{id:-1}]">Add jobs
+      </button>
+    </div>
+  </div>
+  <div class="uk-width-expand@m" style="padding-left: 0px; height: 100%;">
+
+
+
+    <button class="uk-button uk-button-default" (click)="updateJob()"> save change </button>
+    <button class="uk-button uk-button-default" (click)="deleteJob(job.id)"> delete job </button>
+
+
+    <h2 *ngIf="!editName" class="uk-margin">
+      {{job.name}}
+      <a (click)="editName=true"> <span uk-icon="file-edit"></span></a>
+    </h2>
+    <div class="uk-margin" *ngIf="editName">
+      <input class="uk-input uk-form-width-medium uk-form-large" [(ngModel)]="job.name" type="text"
+        placeholder="job name">
+      <a class="uk-margin" (click)="editName=false"> <span uk-icon="check"></span></a>
+    </div>
+
+    <ul uk-accordion class="desc-list">
+      <li class="uk-open">
+        <a class="uk-accordion-title" href="#">Overview</a>
+        <div class="uk-accordion-content">
+          <app-ngx-editor [config]="editorConfig" resizer="basic" [(ngModel)]="job.desc">
+          </app-ngx-editor>
+        </div>
+      </li>
+    </ul>
+
+  </div>
+</div>

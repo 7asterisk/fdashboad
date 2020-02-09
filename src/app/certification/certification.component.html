@@ -1,0 +1,52 @@
+<div class="uk-text-center" uk-grid>
+  <div class="uk-width-1-4@m">
+    <div class="sidenav">
+      <ul class="uk-list">
+        <ul class="uk-list">
+          <li *ngFor="let certification of certifications; let i=index"><a class="uk-button uk-button-text"
+              [routerLink]="[ '/certification',{id:i}]"> {{certification.name}} </a></li>
+        </ul>
+      </ul>
+      <button class="uk-button uk-button-secondary" [routerLink]="[ '/certification',{id:-1}]">Add certification
+      </button>
+    </div>
+  </div>
+  <div class="uk-width-expand@m" style="padding-left: 0px; height: 100%;">
+
+
+    <button class="uk-button uk-button-default" (click)="updateCertification()"> save change </button>
+    <button class="uk-button uk-button-default" (click)="deletecertification(certification.id)"> delete certification </button>
+
+    <h2 *ngIf="!editName" class="uk-margin">
+      {{certification.name}}
+      <a (click)="editName=true"> <span uk-icon="file-edit"></span></a>
+    </h2>
+    <div class="uk-margin" *ngIf="editName">
+      <input class="uk-input uk-form-width-medium uk-form-large" [(ngModel)]="certification.name" type="text"
+        placeholder="certification name">
+      <a class="uk-margin" (click)="editName=false"> <span uk-icon="check"></span></a>
+    </div>
+
+    <div *ngIf="!editImgUrl">
+      <img [src]="certification.imgUrl" style="height: 200px;" alt="">
+      <a (click)="editImgUrl=true"> <span uk-icon="file-edit"></span></a>
+    </div>
+    <div class="uk-margin" *ngIf="editImgUrl">
+      <input class="uk-input uk-form-width-medium uk-form-large" [(ngModel)]="certification.imgUrl" type="text"
+        placeholder="image url">
+      <a class="uk-margin" (click)="editImgUrl=false"> <span uk-icon="check"></span></a>
+    </div>
+
+    <ul uk-accordion class="desc-list">
+      <li class="uk-open">
+        <a class="uk-accordion-title" href="#">Overview</a>
+        <div class="uk-accordion-content">
+          <app-ngx-editor [config]="editorConfig" resizer="basic" [(ngModel)]="certification.desc">
+          </app-ngx-editor>
+        </div>
+      </li>
+    </ul>
+
+
+  </div>
+</div>

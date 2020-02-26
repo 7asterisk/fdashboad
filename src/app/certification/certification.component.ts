@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 declare var UIkit: any;
 
 @Component({
@@ -34,7 +34,7 @@ export class CertificationComponent implements OnInit {
   editImgUrl = false;
   id = 0;
   certifications=[]
-  constructor(private dataService: DataService, private activateRouter: ActivatedRoute) {
+  constructor(private dataService: DataService, private activateRouter: ActivatedRoute,private router: Router) {
     this.activateRouter.paramMap.subscribe(param => {
       this.id = parseInt( param.get("id"));
       console.log(this.id);
@@ -73,10 +73,11 @@ export class CertificationComponent implements OnInit {
   updateCertification() {
     this.dataService.addItem(this.certification, this.certification.name, 'certifications')
   }
-  deletecertification(id){
+  deletecertification(certification){
     UIkit.modal.confirm('do you want to delete?').then( () => {
-      this.dataService.deleteDoc('certifications',id)
+      this.dataService.deleteDoc('certifications',certification.id)
       this.id=-1
+      this.router.navigate([ '/certification',{id:0}]);
       }, function () {
         console.log('Rejected.')
       });

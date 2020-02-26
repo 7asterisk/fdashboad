@@ -3,7 +3,7 @@ import {
   OnInit
 } from '@angular/core';
 import {
-  ActivatedRoute
+  ActivatedRoute, Router
 } from '@angular/router';
 import {
   DataService
@@ -41,7 +41,7 @@ export class JobOpeningsComponent implements OnInit {
   editName = false;
   id = 0;
   openings=[]
-  constructor(private dataService: DataService, private activateRouter: ActivatedRoute) {
+  constructor(private dataService: DataService, private activateRouter: ActivatedRoute,private router: Router) {
     this.activateRouter.paramMap.subscribe(param => {
       this.id = parseInt(param.get("id"));
       console.log(this.id);
@@ -77,11 +77,12 @@ export class JobOpeningsComponent implements OnInit {
     this.dataService.addItem(this.job, this.job.name, 'job-openings')
   }
 
-  deleteJob(id){
+  deleteJob(job){
     UIkit.modal.confirm('do you want to delete?').then( () => {
      
-    this.dataService.deleteDoc('job-openings',id)
+    this.dataService.deleteDoc('job-openings',job.id)
       this.id=-1
+      this.router.navigate([ '/job-openings',{id:0}]);     
       }, function () {
         console.log('Rejected.')
       });

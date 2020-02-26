@@ -15,14 +15,14 @@
 
 
     <button class="uk-button uk-button-default" (click)="updateCertification()"> save change </button>
-    <button class="uk-button uk-button-default" (click)="deletecertification(certification.id)"> delete certification </button>
+    <button class="uk-button uk-button-default" (click)="deletecertification(certification)"> delete certification </button>
 
     <h2 *ngIf="!editName" class="uk-margin">
       {{certification.name}}
       <a (click)="editName=true"> <span uk-icon="file-edit"></span></a>
     </h2>
     <div class="uk-margin" *ngIf="editName">
-      <input class="uk-input uk-form-width-medium uk-form-large" [(ngModel)]="certification.name" type="text"
+      <input class="uk-input uk-form-width-medium " [(ngModel)]="certification.name" type="text"
         placeholder="certification name">
       <a class="uk-margin" (click)="editName=false"> <span uk-icon="check"></span></a>
     </div>
@@ -32,7 +32,7 @@
       <a (click)="editImgUrl=true"> <span uk-icon="file-edit"></span></a>
     </div>
     <div class="uk-margin" *ngIf="editImgUrl">
-      <input class="uk-input uk-form-width-medium uk-form-large" [(ngModel)]="certification.imgUrl" type="text"
+      <input class="uk-input uk-form-width-medium " [(ngModel)]="certification.imgUrl" type="text"
         placeholder="image url">
       <a class="uk-margin" (click)="editImgUrl=false"> <span uk-icon="check"></span></a>
     </div>

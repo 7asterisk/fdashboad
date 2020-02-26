@@ -1,21 +1,21 @@
 <div uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky; bottom: #transparent-sticky-navbar">
 
-  <nav class="uk-navbar-container" uk-navbar>
+  <nav class="uk-navbar-container" uk-navbar *ngIf="user">
     <div class="uk-navbar-right">
 
       <ul class="uk-navbar-nav">
-        <li> <a [routerLink]="[ '/course',{id:0}]">Courses</a>
+        <li [routerLink]="[ '/courses']" routerLinkActive="uk-active"> <a>Courses</a>
         </li>
-        <li> <a [routerLink]="[ '/demo-batch' ]">Schedule</a></li>
-        <li><a [routerLink]="[ '/job-openings',{id:0}]">job-openings</a></li>
-        <li><a [routerLink]="[ '/certification',{id:0}]">Certification</a></li>
+        <li [routerLink]="[ '/demo-batch' ]" routerLinkActive="uk-active"> <a>Schedule</a></li>
+        <li [routerLink]="[ '/job-openings',{id:0}]" routerLinkActive="uk-active"><a>job-openings</a></li>
+        <li [routerLink]="[ '/certification',{id:0}]" routerLinkActive="uk-active"><a>Certification</a></li>
         <li>
-          <a href="#">Parent</a>
+          <a href="#"><span uk-icon="icon: user "></span></a>
           <div class="uk-navbar-dropdown">
             <ul class="uk-nav uk-navbar-dropdown-nav">
-              <li class="uk-active"><a href="#">Active</a></li>
-              <li><a href="#">Item</a></li>
-              <li><a href="#">Item</a></li>
+              <li class="uk-active" (click)="logout()"><a href="#"><span class="uk-margin-small-right"
+                    uk-icon="sign-out"></span>
+                  Logout</a></li>
             </ul>
           </div>
         </li>

@@ -1,0 +1,23 @@
+<br>
+<div class="uk-container">
+
+  <div class="uk-child-width-1-3@s  uk-text-center" uk-grid>
+    <div *ngFor="let course of courses; let i=index">
+      <a [routerLink]="[ '/course',{id:i}]">
+        <div class="uk-card uk-card-default uk-card-body">
+          {{course.name}}
+        </div>
+      </a>
+    </div>
+    <div>
+      <a [routerLink]="[ '/course',{id:-1}]">
+        <div class="uk-card uk-card-default uk-card-body">
+          <span uk-icon="icon: plus; ratio: 3"></span>
+          Add Course
+        </div>
+      </a>
+    </div>
+  </div>
+
+
+</div>

@@ -1,6 +1,4 @@
-import {
-  Component
-} from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -8,5 +6,5 @@ import {
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'dashboad';
+  title = 'fdashboad';
 }

@@ -1,20 +1,11 @@
 {
   "hosting": {
-    "site": "admin-datacams",
-    "public": "dist/dashboad",
+    "public": "dist/quiz",
+    "site": "onlinefurniture",
     "ignore": [
       "firebase.json",
       "**/.*",
       "**/node_modules/**"
-    ],
-    "rewrites": [{
-        "source": "/public/**",
-        "destination": "/public.html"
-      },
-      {
-        "source": "**",
-        "destination": "/index.html"
-      }
     ]
   }
 }
